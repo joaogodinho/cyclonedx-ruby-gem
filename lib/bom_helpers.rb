@@ -39,11 +39,10 @@ def build_bom(gems)
 end 
 
 def get_gem(name, version)
-  url = "https://rubygems.org/api/v1/versions/#{name}.json"
+  url = "https://rubygems.org/api/v2/rubygems/#{name}/versions/#{version.to_s}.json"
   begin
     response = RestClient.get(url)
     body = JSON.parse(response.body)
-    body.select {|item| item["number"] == version.to_s}.first
   rescue 
     @logger.warn("#{name} couldn't be fetched")
     return nil

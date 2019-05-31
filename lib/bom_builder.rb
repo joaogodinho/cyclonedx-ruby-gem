@@ -41,11 +41,11 @@ class Bombuilder
     end
 
     @gems = []
-    licenses_file = File.read "lib/licenses.json"
+    licenses_file = File.read "#{__dir__}/licenses.json"
     @licenses_list = JSON.parse(licenses_file)
 
     if @options[:path].nil?
-      @logger.error("missing path to project directory")
+      @logger.error("Missing path to project directory")
       abort
     end
 
